@@ -8,7 +8,7 @@ class StreamProviderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(multipleStreamProvider);
+    final state = ref.watch(streamProvider);
     return DefaultLayout(
         title: 'StreamProviderScreen',
         body: Center(

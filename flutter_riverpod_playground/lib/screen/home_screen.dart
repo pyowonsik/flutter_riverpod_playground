@@ -5,10 +5,12 @@ import 'package:flutter_riverpod_playground/screen/auto_dispose_modifier_screen.
 import 'package:flutter_riverpod_playground/screen/family_modifier_screen.dart';
 import 'package:flutter_riverpod_playground/screen/future_provider_screen.dart';
 import 'package:flutter_riverpod_playground/screen/listen_provider_screen.dart';
+import 'package:flutter_riverpod_playground/screen/provider_screen.dart';
 import 'package:flutter_riverpod_playground/screen/select_provider_screen.dart';
 import 'package:flutter_riverpod_playground/screen/state_notifier_provider_screen.dart';
 import 'package:flutter_riverpod_playground/screen/state_provider_screen.dart';
 import 'package:flutter_riverpod_playground/screen/stream_provider_screen.dart';
+import 'package:flutter_riverpod_playground/screen/workout_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -98,6 +100,26 @@ class HomeScreen extends StatelessWidget {
               );
             },
             child: const Text('SelectProviderScreen '),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const WorkoutScreen(),
+                ),
+              );
+            },
+            child: const Text('WorkoutScreen '),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const ProviderScreen(),
+                ),
+              );
+            },
+            child: const Text('ProviderScreen'),
           ),
         ],
       ),

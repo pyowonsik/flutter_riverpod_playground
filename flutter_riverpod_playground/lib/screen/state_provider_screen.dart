@@ -8,21 +8,32 @@ class StateProviderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // 등록한 provider watch
     final provider = ref.watch(numberProvider);
-    return DefaultLayout(
-      title: 'StateProviderScreen',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'StateProviderScreen',
+        ),
+      ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: Column(
+        height: MediaQuery.of(context).size.height,
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(provider.toString()),
             ElevatedButton(
               onPressed: () {
                 ref.read(numberProvider.notifier).update((state) => state + 1);
               },
               child: const Text('Up'),
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Text(provider.toString()),
+            const SizedBox(
+              width: 16,
             ),
             ElevatedButton(
               onPressed: () {

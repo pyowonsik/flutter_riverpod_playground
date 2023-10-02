@@ -9,8 +9,10 @@ class AutoDisposeModifierScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(autoDisposeModifierProvider);
-    return DefaultLayout(
-        title: 'AutoDisposeModifierScreen',
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('AutoDisposeModifierScreen'),
+        ),
         body: Center(
           child: state.when(
               data: (data) => Text(data.toString()),
