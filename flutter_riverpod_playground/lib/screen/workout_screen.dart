@@ -8,61 +8,35 @@ class WorkoutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final model = ref.watch(workoutProvider);
-    final state = ref.watch(workoutProvider.select((value) => value.isSuccess));
-
-    ref.listen(workoutProvider.select((value) => value.weight),
-        (previous, next) {
-      if (next == 140) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return const AlertDialog(
-              title: Text('목표 성공'),
-            );
-          },
-        );
-      }
-    });
-
+    final state = ref.watch(filteredWorkoutProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WorkOutScreen'),
+        title: Text('WorkoutScreen'),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (_) => FillterState.values
+                .map((e) => PopupMenuItem(
+                      value: e,
+                      child: Text(e.name),
+                    ))
+                .toList(),
+            onSelected: (value) {
+              ref.read(filterProvider.notifier).update((state) => value);
+            },
+          ),
+        ],
       ),
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(model.name),
-                Text('${model.weight}'),
-                Text(state.toString()),
-              ],
-            ),
-            const SizedBox(
-              width: 16,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  ref.read(workoutProvider.notifier).upWeigth();
-                },
-                child: const Text('Up Weight')),
-            const SizedBox(
-              width: 16,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  ref.read(workoutProvider.notifier).toggleIsSuccess();
-                },
-                child: const Text('Success Toggle')),
-          ],
-        ),
-      ),
+      body: ListView(
+          children: state
+              .map((e) => CheckboxListTile(
+                  title: Text(e.name),
+                  value: e.isSuccess,
+                  onChanged: (bool? value) {
+                    ref
+                        .read(workoutListProvider.notifier)
+                        .toggleIsSuccess(e.name);
+                  }))
+              .toList()),
     );
   }
 }
