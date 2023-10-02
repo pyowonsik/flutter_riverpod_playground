@@ -8,6 +8,22 @@ part 'code_generation_provider.g.dart';
 // StateNotifierProvider
 
 final _testProvider = Provider<String>((ref) => 'Hello Code Generation');
+final originalStateProvider = Provider<String>((ref) => 'riverpod v1');
+final originalFutureProvider = FutureProvider<String>((ref) async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 'Future v1';
+});
+
+@riverpod
+String newState(NewStateRef ref) {
+  return 'riverpod v2';
+}
+
+@riverpod
+Future<String> newFuture(NewFutureRef ref) async {
+  await Future.delayed(Duration(seconds: 3));
+  return 'Future v2';
+}
 
 @riverpod
 String gState(GStateRef ref) {
@@ -38,18 +54,33 @@ class Parameter {
   });
 }
 
-final _testFamilyProdiver = Provider.family<int, Parameter>(
-    (ref, parameter) => parameter.number1 * parameter.number2);
+final originalFamilyProdiver = Provider.family<int, Parameter>(
+    (ref, parameter) => parameter.number1 + parameter.number2);
 
 @riverpod
-int gStateMultiply(GStateMultiplyRef ref,
-    {required int number1, required int number2}) {
-  return number1 * number2;
+int newFamily(NewFamilyRef ref, {required int number1, required int number2}) {
+  return number1 + number2;
+}
+
+final originalStateNotifierProvider =
+    StateNotifierProvider<OriginalStateNotifier, int>(
+        (ref) => OriginalStateNotifier());
+
+class OriginalStateNotifier extends StateNotifier<int> {
+  OriginalStateNotifier() : super(0);
+
+  increment() {
+    state++;
+  }
+
+  decrement() {
+    state--;
+  }
 }
 
 // StateNotifier를 provider로 만드는 법
 @riverpod
-class GStateNotifier extends _$GStateNotifier {
+class NewStateNotifier extends _$NewStateNotifier {
   @override
   int build() {
     return 0;

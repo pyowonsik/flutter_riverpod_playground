@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_playground/layout/default_layout.dart';
 import 'package:flutter_riverpod_playground/screen/auto_dispose_modifier_screen.dart';
+import 'package:flutter_riverpod_playground/screen/code_generation2_screen.dart';
+import 'package:flutter_riverpod_playground/screen/code_generation3_screen.dart';
 import 'package:flutter_riverpod_playground/screen/code_generation_screen.dart';
 import 'package:flutter_riverpod_playground/screen/family_modifier_screen.dart';
 import 'package:flutter_riverpod_playground/screen/future_provider_screen.dart';
@@ -131,6 +133,26 @@ class HomeScreen extends StatelessWidget {
               );
             },
             child: const Text('CodeGenerationScreen'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const CodeGeneration2Screen(),
+                ),
+              );
+            },
+            child: const Text('CodeGeneration2Screen'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const CodeGeneration3Screen(),
+                ),
+              );
+            },
+            child: const Text('CodeGeneration3Screen'),
           ),
         ],
       ),

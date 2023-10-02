@@ -6,6 +6,34 @@ part of 'code_generation_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$newStateHash() => r'94d9e7ca78390b657c824baa60e233a60e64a2ec';
+
+/// See also [newState].
+@ProviderFor(newState)
+final newStateProvider = AutoDisposeProvider<String>.internal(
+  newState,
+  name: r'newStateProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$newStateHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef NewStateRef = AutoDisposeProviderRef<String>;
+String _$newFutureHash() => r'f4d6a5f6c2ec5fa72b6a0566591e24eec50a5192';
+
+/// See also [newFuture].
+@ProviderFor(newFuture)
+final newFutureProvider = AutoDisposeFutureProvider<String>.internal(
+  newFuture,
+  name: r'newFutureProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$newFutureHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef NewFutureRef = AutoDisposeFutureProviderRef<String>;
 String _$gStateHash() => r'7ccdacb016fab2894413745b936f82987f9f72cf';
 
 /// See also [gState].
@@ -49,7 +77,7 @@ final gStateFuture2Provider = FutureProvider<int>.internal(
 );
 
 typedef GStateFuture2Ref = FutureProviderRef<int>;
-String _$gStateMultiplyHash() => r'ec5a8efb6ba3e90e29f7a0722867976890c2a634';
+String _$newFamilyHash() => r'00cc3784574d298352ba1fac1157c3e658da8615';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,29 +100,29 @@ class _SystemHash {
   }
 }
 
-/// See also [gStateMultiply].
-@ProviderFor(gStateMultiply)
-const gStateMultiplyProvider = GStateMultiplyFamily();
+/// See also [newFamily].
+@ProviderFor(newFamily)
+const newFamilyProvider = NewFamilyFamily();
 
-/// See also [gStateMultiply].
-class GStateMultiplyFamily extends Family<int> {
-  /// See also [gStateMultiply].
-  const GStateMultiplyFamily();
+/// See also [newFamily].
+class NewFamilyFamily extends Family<int> {
+  /// See also [newFamily].
+  const NewFamilyFamily();
 
-  /// See also [gStateMultiply].
-  GStateMultiplyProvider call({
+  /// See also [newFamily].
+  NewFamilyProvider call({
     required int number1,
     required int number2,
   }) {
-    return GStateMultiplyProvider(
+    return NewFamilyProvider(
       number1: number1,
       number2: number2,
     );
   }
 
   @override
-  GStateMultiplyProvider getProviderOverride(
-    covariant GStateMultiplyProvider provider,
+  NewFamilyProvider getProviderOverride(
+    covariant NewFamilyProvider provider,
   ) {
     return call(
       number1: provider.number1,
@@ -114,35 +142,34 @@ class GStateMultiplyFamily extends Family<int> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'gStateMultiplyProvider';
+  String? get name => r'newFamilyProvider';
 }
 
-/// See also [gStateMultiply].
-class GStateMultiplyProvider extends AutoDisposeProvider<int> {
-  /// See also [gStateMultiply].
-  GStateMultiplyProvider({
+/// See also [newFamily].
+class NewFamilyProvider extends AutoDisposeProvider<int> {
+  /// See also [newFamily].
+  NewFamilyProvider({
     required int number1,
     required int number2,
   }) : this._internal(
-          (ref) => gStateMultiply(
-            ref as GStateMultiplyRef,
+          (ref) => newFamily(
+            ref as NewFamilyRef,
             number1: number1,
             number2: number2,
           ),
-          from: gStateMultiplyProvider,
-          name: r'gStateMultiplyProvider',
+          from: newFamilyProvider,
+          name: r'newFamilyProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$gStateMultiplyHash,
-          dependencies: GStateMultiplyFamily._dependencies,
-          allTransitiveDependencies:
-              GStateMultiplyFamily._allTransitiveDependencies,
+                  : _$newFamilyHash,
+          dependencies: NewFamilyFamily._dependencies,
+          allTransitiveDependencies: NewFamilyFamily._allTransitiveDependencies,
           number1: number1,
           number2: number2,
         );
 
-  GStateMultiplyProvider._internal(
+  NewFamilyProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -158,12 +185,12 @@ class GStateMultiplyProvider extends AutoDisposeProvider<int> {
 
   @override
   Override overrideWith(
-    int Function(GStateMultiplyRef provider) create,
+    int Function(NewFamilyRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: GStateMultiplyProvider._internal(
-        (ref) => create(ref as GStateMultiplyRef),
+      override: NewFamilyProvider._internal(
+        (ref) => create(ref as NewFamilyRef),
         from: from,
         name: null,
         dependencies: null,
@@ -177,12 +204,12 @@ class GStateMultiplyProvider extends AutoDisposeProvider<int> {
 
   @override
   AutoDisposeProviderElement<int> createElement() {
-    return _GStateMultiplyProviderElement(this);
+    return _NewFamilyProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is GStateMultiplyProvider &&
+    return other is NewFamilyProvider &&
         other.number1 == number1 &&
         other.number2 == number2;
   }
@@ -197,7 +224,7 @@ class GStateMultiplyProvider extends AutoDisposeProvider<int> {
   }
 }
 
-mixin GStateMultiplyRef on AutoDisposeProviderRef<int> {
+mixin NewFamilyRef on AutoDisposeProviderRef<int> {
   /// The parameter `number1` of this provider.
   int get number1;
 
@@ -205,31 +232,31 @@ mixin GStateMultiplyRef on AutoDisposeProviderRef<int> {
   int get number2;
 }
 
-class _GStateMultiplyProviderElement extends AutoDisposeProviderElement<int>
-    with GStateMultiplyRef {
-  _GStateMultiplyProviderElement(super.provider);
+class _NewFamilyProviderElement extends AutoDisposeProviderElement<int>
+    with NewFamilyRef {
+  _NewFamilyProviderElement(super.provider);
 
   @override
-  int get number1 => (origin as GStateMultiplyProvider).number1;
+  int get number1 => (origin as NewFamilyProvider).number1;
   @override
-  int get number2 => (origin as GStateMultiplyProvider).number2;
+  int get number2 => (origin as NewFamilyProvider).number2;
 }
 
-String _$gStateNotifierHash() => r'f5d3562260bad49518ffe5b82e60b7cc1b8655f2';
+String _$newStateNotifierHash() => r'cc67d399ebd83fa20c9a33631c8112b8b8c4486c';
 
-/// See also [GStateNotifier].
-@ProviderFor(GStateNotifier)
-final gStateNotifierProvider =
-    AutoDisposeNotifierProvider<GStateNotifier, int>.internal(
-  GStateNotifier.new,
-  name: r'gStateNotifierProvider',
+/// See also [NewStateNotifier].
+@ProviderFor(NewStateNotifier)
+final newStateNotifierProvider =
+    AutoDisposeNotifierProvider<NewStateNotifier, int>.internal(
+  NewStateNotifier.new,
+  name: r'newStateNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$gStateNotifierHash,
+      : _$newStateNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GStateNotifier = AutoDisposeNotifier<int>;
+typedef _$NewStateNotifier = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
