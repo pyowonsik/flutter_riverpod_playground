@@ -14,7 +14,7 @@ class WorkoutScreen extends ConsumerWidget {
         title: Text('WorkoutScreen'),
         actions: [
           PopupMenuButton(
-            itemBuilder: (_) => FillterState.values
+            itemBuilder: (_) => FilterState.values
                 .map((e) => PopupMenuItem(
                       value: e,
                       child: Text(e.name),
@@ -28,14 +28,12 @@ class WorkoutScreen extends ConsumerWidget {
       ),
       body: ListView(
           children: state
-              .map((e) => CheckboxListTile(
-                  title: Text(e.name),
-                  value: e.isSuccess,
-                  onChanged: (bool? value) {
-                    ref
-                        .read(workoutListProvider.notifier)
-                        .toggleIsSuccess(e.name);
-                  }))
+              .map((e) => Center(
+                      child: Text(
+                    e.name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  )))
               .toList()),
     );
   }
