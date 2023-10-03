@@ -78,6 +78,8 @@ class CodeGeneration2Screen extends ConsumerWidget {
           ),
           Consumer(
             builder: (context, ref, child) {
+              final notifier2 = ref.watch(newStateNotifierProvider);
+
               print('Consumer build');
               return Text(
                 '$notifier2',
